@@ -44,7 +44,7 @@ app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
 // static website routes
 app.get('/', (req, res) => {
-  res.render('home.hbs', { active: { home: true }});
+  res.render('home.hbs');
 });
 
 const PORT = process.env.PORT || 8000;
