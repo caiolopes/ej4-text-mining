@@ -21,7 +21,6 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="http://localhost:8000/assets/css/demo.css" rel="stylesheet" />
 
-
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
@@ -68,7 +67,21 @@
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Word Cloud</h4>
-                                <p class="category"></p>
+                                Selecione o tipo:
+
+                                <select id="type">
+                                  <option value="0">Indenização</option>
+                                  <option value="1">Revisão</option>
+                                  <option value="2">Tarifa</option>
+                                </select>
+
+                                &nbsp;Selecione o resultado:
+
+                                <select id="result">
+                                  <option value="0">Improcedente</option>
+                                  <option value="1">Procedente</option>
+                                </select>
+
                             </div>
                             <div class="content">
                                 <div id="chart"></div>
@@ -88,17 +101,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">Bar Chart</h4>
-                                <p class="category"></p>
-                            </div>
-                            <div class="content">
+                    {{!-- <div class="col-md-6"> --}}
+                        {{!-- <div class="card "> --}}
+                            {{!-- <div class="header"> --}}
+                                {{!-- <h4 class="title">Bar Chart</h4> --}}
+                                {{!-- <p class="category"></p> --}}
+                            {{!-- </div> --}}
+                            {{!-- <div class="content"> --}}
                                 
-                            </div>
-                        </div>
-                    </div>
+                            {{!-- </div> --}}
+                        {{!-- </div> --}}
+                    {{!-- </div> --}}
                 </div>
             </div>
         </div>
