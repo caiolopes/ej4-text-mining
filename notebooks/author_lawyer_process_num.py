@@ -20,10 +20,11 @@ def read_files():
         'lawyers': 0,
     }
 
-    for filename in os.listdir(path):
+    for filename in os.listdir(path)[:10]:
         with open('./{}/{}'.format(path, filename), encoding="cp1252") as f:
             text = f.read()
             text = normalized(text)
+            print(filename)
 
             author = get_author(text)
             process_num = get_process_num(text)
@@ -43,6 +44,9 @@ def read_files():
                 missing['process'] += 1
             if not lawyers:
                 missing['lawyers'] += 1
+            
+            if pos%500 == 0:
+                print(pos, missing)
 
     # print('\n\n\n', results)
     print('Missing', missing)
