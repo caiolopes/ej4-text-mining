@@ -12,11 +12,12 @@ def normalized(text):
 
 
 def read_files():
-    path = 'data'
+    path = '../data'
     results = []
     missing = {
         'author': 0,
         'process': 0,
+        'lawyers': 0,
     }
 
     for filename in os.listdir(path):
@@ -26,11 +27,13 @@ def read_files():
 
             author = get_author(text)
             process_num = get_process_num(text)
+            lawyers = get_lawyer(text)
 
             results.append({
                 filename: {
                     'process': process_num, 
                     'author': author,
+                    'lawyers': lawyers,
                 }
             })
 
@@ -38,8 +41,10 @@ def read_files():
                 missing['author'] += 1
             if not process_num:
                 missing['process'] += 1
+            if not lawyers:
+                missing['lawyers'] += 1
 
-    print('\n\n\n', results)
+    # print('\n\n\n', results)
     print('Missing', missing)
 
 def get_process_num(content):
@@ -56,6 +61,16 @@ def get_author(content):
             if author:
                 return re.sub('[^\w\s]','',author)
     return None
+
+def get_lawyer(content):
+    lawyer_matches = re.findall(r"(?:Adv(?:ogado)?(?:\(a\))?|Procurador)\W[^A-Z]*([A-Z][^\n(-]*)", content)
+    lawyers = []
+
+    for lawyer in lawyer_matches:
+        if lawyer and len(lawyer.split()) <= 5:
+            lawyers.append(lawyer.strip())
+        
+    return lawyers if lawyers else None
 
 if __name__ == '__main__':
     read_files()
